@@ -1,0 +1,71 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.upload-form {
+    @include tablet {
+        display: flex;
+        flex-grow: 2;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @include tablet {
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+    }
+
+    &__profile-image {
+        max-width: 40px;
+        max-height: 40px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+
+        @include tablet {
+            order: 2;
+        }
+    }
+
+    &__search-field {
+        flex-grow: 2;
+        border-radius: 0.5rem;
+        border: 1px solid $primary-color-silver;
+        background: transparent url('../../assets/icons/search.svg')
+            left center no-repeat;
+        background-position-x: 10px;
+        background-color: $secondary-color-alabaster;
+        padding-left: 35px;
+
+        @include tablet {
+            flex-grow: unset;
+            width: toRem(300);
+        }
+    }
+    &__submit-button {
+        flex: 1 0 100%;
+
+        @include tablet {
+            flex: unset;
+            width: toRem(180);
+        }
+    }
+
+    &__button-image,
+    &__button-spacer {
+        width: 30px;
+        padding-left: toRem(10);
+
+        @include tablet {
+            // max-width: unset;
+            // max-height: unset;
+        }
+    }
+    &__button-text {
+        flex-grow: 1;
+        text-align: center;
+    }
+}

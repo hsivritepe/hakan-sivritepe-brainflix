@@ -1,0 +1,53 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.video-details {
+    &__title {
+        font-weight: 700;
+        font-size: toRem($font-mobile-page-header-px);
+        padding: 1rem 0 1rem;
+        margin: 0 toRem($padding-mobile-between-components-px);
+        line-height: 2.75rem;
+        border-bottom: 1px solid $secondary-color-mercury;
+    }
+
+    &__info-container {
+        display: flex;
+        padding: 1rem 0 1rem;
+        margin: 0 toRem($padding-mobile-between-components-px);
+        border-bottom: 1px solid $secondary-color-mercury;
+
+        @include tablet {
+            justify-content: space-between;
+        }
+    }
+
+    &__owner {
+        font-weight: 700;
+    }
+
+    &__left-column,
+    &__right-column {
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+        row-gap: 0.65rem;
+
+        @include tablet {
+            flex-direction: row;
+            width: unset;
+            column-gap: 2rem;
+        }
+    }
+
+    &__views,
+    &__likes {
+        display: flex;
+        column-gap: 0.35rem;
+    }
+
+    &__content {
+        padding: 1rem 0 1rem;
+        margin: 0 toRem($padding-mobile-between-components-px);
+    }
+}

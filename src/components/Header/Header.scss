@@ -1,0 +1,34 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.header {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    padding: toRem($padding-mobile-between-components-px);
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: toRem($padding-tablet-after-headlines-px)
+            toRem($padding-tablet-between-components-px)
+            toRem($padding-tablet-after-headlines-px);
+    }
+
+    @include desktop {
+        padding: toRem($padding-desktop-after-headlines-px)
+            toRem($padding-desktop-between-components-px)
+            toRem($padding-desktop-after-headlines-px);
+    }
+
+    &__logo {
+        align-self: center;
+        padding-bottom: toRem($padding-mobile-between-components-px);
+
+        @include tablet {
+            padding-bottom: unset;
+            padding-right: 6rem;
+        }
+    }
+}
