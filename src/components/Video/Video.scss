@@ -1,0 +1,21 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.video-list {
+    &__item {
+        display: flex;
+    }
+    &__item-title {
+        font-weight: 700;
+        font-size: toRem($font-mobile-subheader-px);
+    }
+
+    &__image {
+        width: 20%;
+        border-radius: 4px;
+    }
+    &__text-content {
+        padding: 0 0 0 toRem($padding-mobile-between-components-px);
+        flex-grow: 1;
+    }
+}

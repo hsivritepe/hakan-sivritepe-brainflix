@@ -1,6 +1,6 @@
 import './Upload.scss';
-import profileImage from '../../assets/images/Mohan-muruge.jpg';
 import uploadIcon from '../../assets/icons/upload.svg';
+import profileImage from '../../assets/images/Mohan-muruge.jpg';
 
 function Upload() {
     return (

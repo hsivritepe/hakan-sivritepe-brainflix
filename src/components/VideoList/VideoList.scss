@@ -1,0 +1,40 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.video-list {
+    padding: toRem($padding-mobile-between-components-px);
+
+    @include tablet {
+        padding: toRem($padding-tablet-after-headlines-px)
+            toRem($padding-tablet-between-components-px)
+            toRem($padding-tablet-after-headlines-px);
+    }
+
+    @include desktop {
+        padding: toRem($padding-desktop-after-headlines-px)
+            toRem($padding-desktop-between-components-px)
+            toRem($padding-desktop-after-headlines-px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    &__title {
+        color: $primary-color-silver;
+        font-size: toRem($font-mobile-subheader-px);
+        padding: toRem($padding-mobile-after-headlines-px) 0
+            toRem($padding-mobile-after-headlines-px) 0;
+
+        @include tablet {
+            font-size: toRem($font-tablet-section-header-px);
+            padding: toRem($padding-tablet-before-headlines-px) 0
+                toRem($padding-tablet-after-headlines-px) 0;
+        }
+        @include desktop {
+            padding: toRem($padding-desktop-before-headlines-px) 0
+                toRem($padding-desktop-after-headlines-px) 0;
+        }
+    }
+}

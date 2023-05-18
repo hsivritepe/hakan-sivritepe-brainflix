@@ -147,6 +147,9 @@ body {
         line-height: toRem($line-height-tablet-body-px);
     }
 }
+textarea {
+    font-family: unset;
+}
 
 .button {
     background-color: $primary-color-blue;
