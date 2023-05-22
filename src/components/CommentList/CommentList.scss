@@ -67,6 +67,8 @@
             border-radius: toRem(4);
             border: 1px solid $primary-color-silver;
             height: 10rem;
+            overflow: hidden;
+            resize: none;
 
             @include tablet {
                 height: 3.45rem;
