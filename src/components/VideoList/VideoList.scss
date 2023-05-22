@@ -13,7 +13,7 @@
     @include desktop {
         padding: toRem($padding-desktop-after-headlines-px)
             toRem($padding-desktop-between-components-px)
-            toRem($padding-desktop-after-headlines-px);
+            toRem($padding-desktop-after-headlines-px) 2rem;
     }
 
     &__container {
@@ -24,17 +24,14 @@
     &__title {
         color: $primary-color-silver;
         font-size: toRem($font-mobile-subheader-px);
-        padding: toRem($padding-mobile-after-headlines-px) 0
-            toRem($padding-mobile-after-headlines-px) 0;
+        padding: 0 0 toRem($padding-mobile-after-headlines-px) 0;
+        font-weight: 700;
 
         @include tablet {
-            font-size: toRem($font-tablet-section-header-px);
-            padding: toRem($padding-tablet-before-headlines-px) 0
-                toRem($padding-tablet-after-headlines-px) 0;
+            padding: 0 0 toRem($padding-tablet-after-headlines-px) 0;
         }
         @include desktop {
-            padding: toRem($padding-desktop-before-headlines-px) 0
-                toRem($padding-desktop-after-headlines-px) 0;
+            padding: 0 0 toRem($padding-desktop-after-headlines-px) 0;
         }
     }
 }

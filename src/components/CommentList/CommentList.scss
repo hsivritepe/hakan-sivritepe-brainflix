@@ -6,11 +6,12 @@
     line-height: toRem($line-height-mobile-body-px);
 
     @include tablet {
-        padding: 0 10.25vw;
+        padding: 0 toRem($padding-tablet-between-components-px);
         line-height: toRem($line-height-tablet-body-px);
     }
     @include desktop {
-        padding: 0 18.25vw;
+        padding: 0 2rem 0
+            toRem($padding-desktop-between-components-px);
         line-height: toRem($line-height-tablet-body-px);
     }
 
@@ -21,13 +22,11 @@
             toRem($padding-mobile-after-headlines-px) 0;
 
         @include tablet {
-            font-size: toRem($font-tablet-section-header-px);
-            padding: toRem($padding-tablet-before-headlines-px) 0
-                toRem($padding-tablet-after-headlines-px) 0;
+            //font-size: toRem($font-mobile-section-header-px);
+            padding: 0 0 1.75rem 0;
         }
         @include desktop {
-            padding: toRem($padding-desktop-before-headlines-px) 0
-                toRem($padding-desktop-after-headlines-px) 0;
+            padding: 0 0 toRem($padding-desktop-after-headlines-px) 0;
         }
     }
 
@@ -51,6 +50,11 @@
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+
+            @include tablet {
+                flex-direction: row;
+                align-items: flex-end;
+            }
         }
 
         &__form-name,
@@ -62,6 +66,11 @@
             );
             border-radius: toRem(4);
             border: 1px solid $primary-color-silver;
+            height: 10rem;
+
+            @include tablet {
+                height: 3.45rem;
+            }
 
             &::placeholder {
                 color: $primary-color-black;
@@ -82,6 +91,18 @@
             text-transform: uppercase;
             margin-bottom: toRem(8);
         }
+
+        &__form-button {
+            @include tablet {
+                margin: 0 0 1rem 1rem;
+            }
+        }
+
+        &__input-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
     }
 
     .old-comments {
@@ -93,6 +114,11 @@
             display: flex;
             padding: 1rem 0;
             border-bottom: 1px solid $secondary-color-mercury;
+        }
+        &__container:last-child {
+            @include desktop {
+                border-bottom: unset;
+            }
         }
 
         &__profile-icon {

@@ -4,8 +4,6 @@ import profileImage from '../../assets/images/Mohan-muruge.jpg';
 import commentIcon from '../../assets/icons/add_comment.svg';
 
 function CommentList(props) {
-    // console.log(props.activeVideoComments);
-    // console.log(props.activeVideoData[0].comments);
     return (
         <section className="comments">
             <h2 className="comments__title-section-header">
@@ -22,20 +20,20 @@ function CommentList(props) {
                     className="new-comment__form-container"
                     id="new-comment-form"
                 >
-                    <label
-                        htmlFor="formComment"
-                        className="new-comment__form-label"
-                    >
-                        JOIN THE CONVERSATION
-                    </label>
-                    <textarea
-                        name="formComment"
-                        id="formComment"
-                        cols="30"
-                        rows="10"
-                        className="new-comment__form-comment"
-                        placeholder="Add a new comment"
-                    ></textarea>
+                    <div className="new-comment__input-area">
+                        <label
+                            htmlFor="formComment"
+                            className="new-comment__form-label"
+                        >
+                            JOIN THE CONVERSATION
+                        </label>
+                        <textarea
+                            name="formComment"
+                            id="formComment"
+                            className="new-comment__form-comment"
+                            placeholder="Add a new comment"
+                        ></textarea>
+                    </div>
                     <a
                         href=""
                         type="submit"
@@ -48,7 +46,7 @@ function CommentList(props) {
                             className="upload-form__button-image"
                         />
                         <span className="upload-form__button-text">
-                            UPLOAD
+                            COMMENT
                         </span>
                     </a>
                 </form>

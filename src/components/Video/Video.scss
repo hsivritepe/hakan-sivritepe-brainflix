@@ -4,6 +4,7 @@
 .video-list {
     &__item {
         display: flex;
+        cursor: pointer;
     }
     &__item-title {
         font-weight: 700;
@@ -11,8 +12,10 @@
     }
 
     &__image {
-        width: 20%;
+        width: 25%;
         border-radius: 4px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
     }
     &__text-content {
         padding: 0 0 0 toRem($padding-mobile-between-components-px);

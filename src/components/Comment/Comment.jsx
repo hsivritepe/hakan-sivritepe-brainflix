@@ -2,10 +2,8 @@ import './Comment.scss';
 import greyBackground from '../../assets/images/grey-background.jpg';
 
 function Comment(props) {
-    // console.log('hhhh');
-    // console.log(props.commentData);
-    // const data = props.commentData;
-    // console.log(data.name);
+    let { name, comment, timestamp } = props.commentData;
+    const date = new Date(timestamp);
     return (
         <li className="old-comments__container">
             <img
@@ -14,15 +12,13 @@ function Comment(props) {
             />
             <div className="old-comments__content">
                 <div className="old-comments__top">
-                    <p className="old-comments__name">
-                        {props.commentData.name}
+                    <p className="old-comments__name">{name}</p>
+                    <p className="old-comments__date">
+                        {date.toLocaleDateString('en-US')}
                     </p>
-                    <p className="old-comments__date"></p>
                 </div>
                 <div className="old-comments__bottom">
-                    <p className="old-comments__comment">
-                        {props.commentData.comment}
-                    </p>
+                    <p className="old-comments__comment">{comment}</p>
                 </div>
             </div>
         </li>

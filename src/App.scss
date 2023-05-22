@@ -147,8 +147,10 @@ body {
         line-height: toRem($line-height-tablet-body-px);
     }
 }
+input,
 textarea {
     font-family: unset;
+    font-size: unset;
 }
 
 .button {
@@ -158,12 +160,41 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
+    height: 55px;
     border-radius: toRem(4);
     text-decoration: none;
+    min-width: 10rem;
+
+    @include tablet {
+        font-size: toRem($font-mobile-body-px);
+    }
 }
 
 .button:hover {
     background-color: $secondary-color-darkblue;
     cursor: pointer;
+}
+
+.App {
+    @include desktop {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.bottom-part {
+    @include desktop {
+        display: flex;
+    }
+
+    &__left-side {
+        @include desktop {
+            width: 65%;
+        }
+    }
+    &__right-side {
+        @include desktop {
+            border-left: 1px solid $secondary-color-mercury;
+            width: 35%;
+        }
+    }
 }

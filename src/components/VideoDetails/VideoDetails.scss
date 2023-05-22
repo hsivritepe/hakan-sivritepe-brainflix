@@ -2,6 +2,18 @@
 @use '../../styles/partials/mixins' as *;
 
 .video-details {
+    @include tablet {
+        padding: toRem($padding-tablet-after-headlines-px)
+            toRem($padding-tablet-between-components-px)
+            toRem($padding-tablet-after-headlines-px);
+    }
+
+    @include desktop {
+        padding: toRem($padding-desktop-after-headlines-px) 2rem
+            toRem($padding-desktop-after-headlines-px)
+            toRem($padding-desktop-between-components-px);
+    }
+
     &__title {
         font-weight: 700;
         font-size: toRem($font-mobile-page-header-px);
@@ -9,6 +21,11 @@
         margin: 0 toRem($padding-mobile-between-components-px);
         line-height: 2.75rem;
         border-bottom: 1px solid $secondary-color-mercury;
+
+        @include tablet {
+            border-bottom: unset;
+            margin: unset;
+        }
     }
 
     &__info-container {
@@ -19,6 +36,7 @@
 
         @include tablet {
             justify-content: space-between;
+            margin: unset;
         }
     }
 
@@ -49,5 +67,10 @@
     &__content {
         padding: 1rem 0 1rem;
         margin: 0 toRem($padding-mobile-between-components-px);
+
+        @include tablet {
+            line-height: toRem($line-height-tablet-body-px);
+            margin: unset;
+        }
     }
 }
