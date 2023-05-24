@@ -164,10 +164,10 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 55px;
+    height: 48px;
     border-radius: toRem(4);
     text-decoration: none;
-    min-width: 10rem;
+    min-width: 12rem;
 
     @include tablet {
         font-size: toRem($font-mobile-body-px);

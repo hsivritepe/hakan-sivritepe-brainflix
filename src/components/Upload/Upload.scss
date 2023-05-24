@@ -40,7 +40,7 @@
 
         @include tablet {
             flex-grow: unset;
-            width: toRem(300);
+            max-width: toRem(400);
         }
     }
     &__submit-button {
