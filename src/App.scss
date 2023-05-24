@@ -152,6 +152,10 @@ textarea {
     font-family: unset;
     font-size: unset;
 }
+textarea {
+    resize: none;
+    overflow: hidden;
+}
 
 .button {
     background-color: $primary-color-blue;
@@ -168,11 +172,31 @@ textarea {
     @include tablet {
         font-size: toRem($font-mobile-body-px);
     }
-}
 
+    &__button-image,
+    &__button-spacer {
+        width: 30px;
+        padding-left: toRem(10);
+
+        @include tablet {
+            // max-width: unset;
+            // max-height: unset;
+        }
+    }
+}
 .button:hover {
     background-color: $secondary-color-darkblue;
     cursor: pointer;
+}
+
+.button-as-text {
+    color: $primary-color-blue;
+    justify-content: center;
+    background-color: $primary-color-white;
+}
+.button-as-text:hover {
+    border: 1px solid $primary-color-blue;
+    background-color: $primary-color-white;
 }
 
 .App {
@@ -197,4 +221,12 @@ textarea {
             width: 35%;
         }
     }
+}
+
+.input-base {
+    border-radius: 0.5rem;
+    border: 1px solid $primary-color-silver;
+    background-color: $secondary-color-alabaster;
+    padding: 0.75rem;
+    width: 100%;
 }

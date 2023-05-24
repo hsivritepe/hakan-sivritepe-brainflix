@@ -1,3 +1,4 @@
+import '../../App.scss';
 import './Upload.scss';
 import uploadIcon from '../../assets/icons/upload.svg';
 import profileImage from '../../assets/images/Mohan-muruge.jpg';
@@ -15,7 +16,7 @@ function Upload() {
                     type="text"
                     name="searchField"
                     placeholder="Search"
-                    className="upload-form__search-field"
+                    className="input-base upload-form__search-field"
                 />
                 <img
                     src={profileImage}
@@ -30,12 +31,12 @@ function Upload() {
                     <img
                         src={uploadIcon}
                         alt=""
-                        className="upload-form__button-image"
+                        className="button__button-image"
                     />
                     <span className="upload-form__button-text">
                         UPLOAD
                     </span>
-                    <div className="upload-form__button-spacer"></div>
+                    <div className="button__button-spacer"></div>
                 </a>
             </form>
         </section>

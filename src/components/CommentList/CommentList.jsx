@@ -43,11 +43,12 @@ function CommentList(props) {
                         <img
                             src={commentIcon}
                             alt=""
-                            className="upload-form__button-image"
+                            className="button__button-image"
                         />
                         <span className="upload-form__button-text">
                             COMMENT
                         </span>
+                        <div className="button__button-spacer"></div>
                     </a>
                 </form>
             </div>

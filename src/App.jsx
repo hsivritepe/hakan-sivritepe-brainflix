@@ -1,48 +1,27 @@
 import './App.scss';
-import videoDetailsJSON from './data/video-details.json';
-import videosJSON from './data/videos.json';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header/Header';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer';
-import VideoDetails from './components/VideoDetails/VideoDetails';
-import CommentList from './components/CommentList/CommentList';
-import VideoList from './components/VideoList/VideoList';
-import { useState } from 'react';
+
+import HomePage from './pages/HomePage/HomePage';
+import UploadPage from './pages/UploadPage/UploadPage';
 
 function App() {
-    const [videoDetailsData, setVideoDetailsData] = useState(
-        videoDetailsJSON[0]
-    );
-    const [videoData, setVideoData] = useState(videosJSON);
-
-    const changeVideo = (newId) => {
-        setVideoDetailsData(
-            videoDetailsJSON.find(({ id }) => id === newId)
-        );
-    };
-
     return (
         <div className="App">
-            <Header />
-            <VideoPlayer activeVideoURL={videoDetailsData.video} />
-            <section className="bottom-part">
-                <div className="bottom-part__left-side">
-                    <VideoDetails
-                        activeVideoDetails={videoDetailsData}
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<HomePage header={<Header />} />}
                     />
-                    <CommentList
-                        activeVideoComments={
-                            videoDetailsData.comments
-                        }
+                    <Route
+                        path="/upload"
+                        element={<UploadPage header={<Header />} />}
                     />
-                </div>
-                <div className="bottom-part__right-side">
-                    <VideoList
-                        videoData={videoData}
-                        changeVideo={changeVideo}
-                        activeVideoID={videoDetailsData.id}
-                    />
-                </div>
-            </section>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
