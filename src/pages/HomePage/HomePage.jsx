@@ -5,22 +5,52 @@ import VideoDetails from '../../components/VideoDetails/VideoDetails';
 import CommentList from '../../components/CommentList/CommentList';
 import VideoList from '../../components/VideoList/VideoList';
 
-import videoDetailsJSON from '../../data/video-details.json';
-import videosJSON from '../../data/videos.json';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function HomePage(props) {
-    const [videoDetailsData, setVideoDetailsData] = useState(
-        videoDetailsJSON[0]
+    const [videoDetailsData, setVideoDetailsData] = useState([]);
+    const [videoData, setVideoData] = useState([]);
+    const [selectedVideoId, setSelectedVideoId] = useState(
+        '84e96018-4022-434e-80bf-000ce4cd12b8'
     );
-    const [videoData, setVideoData] = useState(videosJSON);
 
-    const changeVideo = (newId) => {
-        setVideoDetailsData(
-            videoDetailsJSON.find(({ id }) => id === newId)
-        );
-    };
+    const params = useParams();
+
+    // Gather the videos for the video list
+    useEffect(() => {
+        axios
+            .get(
+                'https://project-2-api.herokuapp.com/videos?api_key=53115177-82fd-4748-a35b-155d0b38c944'
+            )
+            .then((response) => {
+                setVideoData(response.data);
+            });
+    });
+
+    // Track the changes on selected video ID to get the video details via API request
+    useEffect(() => {
+        axios
+            .get(
+                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}?api_key=53115177-82fd-4748-a35b-155d0b38c944`
+            )
+            .then((response) => {
+                setVideoDetailsData(response.data);
+            });
+    }, [selectedVideoId]);
+
+    // Track the params for routing between the video pages
+    useEffect(() => {
+        if (!params.id) {
+            setSelectedVideoId(
+                '84e96018-4022-434e-80bf-000ce4cd12b8'
+            );
+        } else {
+            setSelectedVideoId(params.id);
+        }
+    }, [params.id]);
+
     return (
         <>
             {props.header}
@@ -39,7 +69,6 @@ function HomePage(props) {
                 <div className="bottom-part__right-side">
                     <VideoList
                         videoData={videoData}
-                        changeVideo={changeVideo}
                         activeVideoID={videoDetailsData.id}
                     />
                 </div>

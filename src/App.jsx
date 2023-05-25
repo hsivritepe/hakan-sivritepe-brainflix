@@ -17,6 +17,10 @@ function App() {
                         element={<HomePage header={<Header />} />}
                     />
                     <Route
+                        path="/video/:id"
+                        element={<HomePage header={<Header />} />}
+                    />
+                    <Route
                         path="/upload"
                         element={<UploadPage header={<Header />} />}
                     />

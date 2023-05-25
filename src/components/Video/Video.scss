@@ -5,6 +5,8 @@
     &__item {
         display: flex;
         cursor: pointer;
+        text-decoration: unset;
+        color: unset;
     }
     &__item-title {
         font-weight: 700;

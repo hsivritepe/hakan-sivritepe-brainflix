@@ -3,7 +3,16 @@ import './Upload.scss';
 import uploadIcon from '../../assets/icons/upload.svg';
 import profileImage from '../../assets/images/Mohan-muruge.jpg';
 
+import { useNavigate } from 'react-router-dom';
+
 function Upload() {
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate('/upload');
+        // console.log(event);
+    };
     return (
         <section className="upload-form">
             <form
@@ -27,6 +36,7 @@ function Upload() {
                     href=""
                     type="submit"
                     className="button upload-form__submit-button"
+                    onClick={handleSubmit}
                 >
                     <img
                         src={uploadIcon}

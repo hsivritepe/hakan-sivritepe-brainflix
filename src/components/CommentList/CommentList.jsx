@@ -53,7 +53,7 @@ function CommentList(props) {
                 </form>
             </div>
             <ul className="old-comments">
-                {props.activeVideoComments.map((comment) => (
+                {props.activeVideoComments?.map((comment) => (
                     <Comment key={comment.id} commentData={comment} />
                 ))}
             </ul>
