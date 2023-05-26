@@ -1,6 +1,7 @@
 import './VideoList.scss';
 import Video from '../Video/Video';
 
+// This component is to create and display the videolist of the available vidoes
 function VideoList(props) {
     return (
         <section className="video-list">

@@ -5,14 +5,15 @@ import profileImage from '../../assets/images/Mohan-muruge.jpg';
 
 import { useNavigate } from 'react-router-dom';
 
+// This component is used to create a upload form inside the header
 function Upload() {
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         navigate('/upload');
-        // console.log(event);
     };
+
     return (
         <section className="upload-form">
             <form

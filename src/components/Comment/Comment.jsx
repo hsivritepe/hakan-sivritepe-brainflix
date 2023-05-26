@@ -2,13 +2,15 @@ import './Comment.scss';
 import greyBackground from '../../assets/images/grey-background.jpg';
 import commentIcon from '../../assets/icons/add_comment.svg';
 
+// This component is to display each comment
 function Comment(props) {
     const handleCommentDelete = () => {
         props.deleteCommentWithAPI(props.selectedVideoId, props.id);
     };
-    // console.log(props);
+
     let { name, comment, timestamp } = props.commentData;
     const date = new Date(timestamp);
+
     return (
         <li className="old-comments__container">
             <img

@@ -2,6 +2,7 @@ import './Video.scss';
 
 import { Link } from 'react-router-dom';
 
+// This component is to create each video item
 function Video({ videoData }) {
     let { id, image, title, channel } = videoData;
     return (

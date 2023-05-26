@@ -2,6 +2,7 @@ import './VideoDetails.scss';
 import imageViews from '../../assets/icons/views.svg';
 import imageLikes from '../../assets/icons/likes.svg';
 
+// This component is used to create and display the video details on the page
 function VideoDetails(props) {
     let {
         channel,

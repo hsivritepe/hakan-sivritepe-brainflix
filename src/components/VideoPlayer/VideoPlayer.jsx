@@ -1,6 +1,7 @@
 import './VideoPlayer.scss';
 import posterImage from '../../assets/images/Upload-video-preview.jpg';
 
+// This component is to create and display the video player on the video details pages
 function VideoPlayer(props) {
     return (
         <section className="video-player">

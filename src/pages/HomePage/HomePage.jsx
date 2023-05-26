@@ -16,6 +16,7 @@ function HomePage(props) {
 
     const params = useParams();
 
+    // Function to make a get call to the api to get the video details
     const getVideoDetailsWithAPI = (selectedVideoId) => {
         if (selectedVideoId) {
             axios
@@ -35,6 +36,7 @@ function HomePage(props) {
         }
     };
 
+    // Function to make a post call to the api to create a new comment for a video
     const createNewCommentWithAPI = (formData, selectedVideoId) => {
         const newCommentData = {
             comment: formData.formComment,
@@ -57,6 +59,7 @@ function HomePage(props) {
             .catch((error) => console.log(error));
     };
 
+    // Function to make a delete call to the api to delete a comment for a video
     const deleteCommentWithAPI = (selectedVideoId, commentId) => {
         axios
             .delete(
@@ -102,8 +105,6 @@ function HomePage(props) {
             setSelectedVideoId(videoData['0'].id);
         }
     }, [params.id, videoData]);
-
-    console.log('selectedID (end) : ' + selectedVideoId);
 
     return (
         <>

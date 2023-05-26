@@ -1,12 +1,12 @@
 import './CommentList.scss';
+
 import Comment from '../Comment/Comment';
 import profileImage from '../../assets/images/Mohan-muruge.jpg';
 import commentIcon from '../../assets/icons/add_comment.svg';
 
+// This component is to create a comment form and to list all the comments
 function CommentList(props) {
     const handleCommentFormSubmit = (event) => {
-        // props.getVideoDetailsWithAPI(props.selectedVideoId);
-        // props.getVideoDetailsWithAPI(props.selectedVideoId);
         event.preventDefault();
         props.createNewCommentWithAPI(
             {
@@ -14,10 +14,8 @@ function CommentList(props) {
             },
             props.selectedVideoId
         );
-        console.log(event.target.formComment.value);
-        console.log(props);
-        console.log(props.activeVideoComments);
     };
+
     return (
         <section className="comments">
             <h2 className="comments__title-section-header">

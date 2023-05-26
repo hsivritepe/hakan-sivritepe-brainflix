@@ -12,8 +12,8 @@ function UploadPage(props) {
         event.preventDefault();
         alert('Form submission is successful!');
         navigate('/');
-        // console.log(event.target);
     };
+
     return (
         <>
             {props.header}
