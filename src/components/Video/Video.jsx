@@ -5,11 +5,7 @@ import { Link } from 'react-router-dom';
 function Video(props) {
     let { id, image, title, channel } = props.videoData;
     return (
-        <li
-            //className="video-list__item"
-            id={id}
-            // onClick={() => props.changeVideo(id)}
-        >
+        <li key={id}>
             <Link to={`/video/${id}`} className="video-list__item">
                 <img
                     src={image}

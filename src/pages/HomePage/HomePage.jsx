@@ -18,7 +18,57 @@ function HomePage(props) {
 
     const params = useParams();
 
-    // Gather the videos for the video list
+    const getVideoDetailsWithAPI = (selectedVideoId) => {
+        axios
+            .get(
+                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}?api_key=53115177-82fd-4748-a35b-155d0b38c944`
+            )
+            .then((response) => {
+                setVideoDetailsData(response.data);
+            })
+            .catch((error) => console.log(error));
+    };
+
+    const createNewCommentWithAPI = (formData, selectedVideoId) => {
+        const newCommentData = {
+            comment: formData.formComment,
+            name: 'Hakan Sivritepe',
+        };
+        axios
+            .post(
+                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments`,
+                newCommentData,
+                {
+                    params: {
+                        api_key:
+                            '53115177-82fd-4748-a35b-155d0b38c944',
+                    },
+                }
+            )
+            .then((response) => {
+                getVideoDetailsWithAPI(selectedVideoId);
+            })
+            .catch((error) => console.log(error));
+    };
+
+    const deleteCommentWithAPI = (selectedVideoId, commentId) => {
+        axios
+            .delete(
+                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments/${commentId}`,
+                {
+                    params: {
+                        api_key:
+                            '53115177-82fd-4748-a35b-155d0b38c944',
+                    },
+                }
+            )
+            .then((response) => {
+                getVideoDetailsWithAPI(selectedVideoId);
+            })
+            .catch((error) => console.log(error));
+    };
+
+    // Gather the videos for the video list for once
     useEffect(() => {
         axios
             .get(
@@ -26,18 +76,13 @@ function HomePage(props) {
             )
             .then((response) => {
                 setVideoData(response.data);
-            });
-    });
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
     // Track the changes on selected video ID to get the video details via API request
     useEffect(() => {
-        axios
-            .get(
-                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}?api_key=53115177-82fd-4748-a35b-155d0b38c944`
-            )
-            .then((response) => {
-                setVideoDetailsData(response.data);
-            });
+        getVideoDetailsWithAPI(selectedVideoId);
     }, [selectedVideoId]);
 
     // Track the params for routing between the video pages
@@ -50,6 +95,8 @@ function HomePage(props) {
             setSelectedVideoId(params.id);
         }
     }, [params.id]);
+
+    console.log('selectedID : ' + selectedVideoId);
 
     return (
         <>
@@ -64,6 +111,11 @@ function HomePage(props) {
                         activeVideoComments={
                             videoDetailsData.comments
                         }
+                        createNewCommentWithAPI={
+                            createNewCommentWithAPI
+                        }
+                        deleteCommentWithAPI={deleteCommentWithAPI}
+                        selectedVideoId={selectedVideoId}
                     />
                 </div>
                 <div className="bottom-part__right-side">

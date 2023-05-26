@@ -3,12 +3,26 @@ import './UploadPage.scss';
 import uploadVideoImage from '../../assets/images/Upload-video-preview.jpg';
 import publishIcon from '../../assets/icons/publish.svg';
 
+import { useNavigate } from 'react-router-dom';
+
 function UploadPage(props) {
+    const navigate = useNavigate();
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        alert('Form submission is successful!');
+        navigate('/');
+        // console.log(event.target);
+    };
     return (
         <>
             {props.header}
             <section className="upload-page">
-                <form action="" className="upload-page__form">
+                <form
+                    action=""
+                    className="upload-page__form"
+                    onSubmit={handleFormSubmit}
+                >
                     <h1 className="upload-page__title">
                         Upload Video
                     </h1>
@@ -43,8 +57,7 @@ function UploadPage(props) {
                         </div>
                     </div>
                     <div className="upload-page__button-container">
-                        <a
-                            href=""
+                        <button
                             type="submit"
                             className="button upload-page__button"
                         >
@@ -55,10 +68,9 @@ function UploadPage(props) {
                             />
                             <span>PUBLISH</span>
                             <div className="button__button-spacer"></div>
-                        </a>
+                        </button>
                         <a
                             href=""
-                            type="submit"
                             className="button button-as-text upload-page__button"
                         >
                             <span>CANCEL</span>

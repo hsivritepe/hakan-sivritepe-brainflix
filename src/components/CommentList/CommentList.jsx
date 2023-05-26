@@ -4,10 +4,24 @@ import profileImage from '../../assets/images/Mohan-muruge.jpg';
 import commentIcon from '../../assets/icons/add_comment.svg';
 
 function CommentList(props) {
+    const handleCommentFormSubmit = (event) => {
+        // props.getVideoDetailsWithAPI(props.selectedVideoId);
+        // props.getVideoDetailsWithAPI(props.selectedVideoId);
+        event.preventDefault();
+        props.createNewCommentWithAPI(
+            {
+                formComment: event.target.formComment.value,
+            },
+            props.selectedVideoId
+        );
+        console.log(event.target.formComment.value);
+        console.log(props);
+        console.log(props.activeVideoComments);
+    };
     return (
         <section className="comments">
             <h2 className="comments__title-section-header">
-                3 Comments
+                {props.activeVideoComments?.length} Comments
             </h2>
             <div className="new-comment">
                 <img
@@ -19,6 +33,7 @@ function CommentList(props) {
                     action=""
                     className="new-comment__form-container"
                     id="new-comment-form"
+                    onSubmit={handleCommentFormSubmit}
                 >
                     <div className="new-comment__input-area">
                         <label
@@ -34,10 +49,9 @@ function CommentList(props) {
                             placeholder="Add a new comment"
                         ></textarea>
                     </div>
-                    <a
-                        href=""
+                    <button
                         type="submit"
-                        className="submit"
+                        // className="submit"
                         className="button new-comment__form-button"
                     >
                         <img
@@ -49,12 +63,20 @@ function CommentList(props) {
                             COMMENT
                         </span>
                         <div className="button__button-spacer"></div>
-                    </a>
+                    </button>
                 </form>
             </div>
             <ul className="old-comments">
                 {props.activeVideoComments?.map((comment) => (
-                    <Comment key={comment.id} commentData={comment} />
+                    <Comment
+                        key={comment.id}
+                        id={comment.id}
+                        commentData={comment}
+                        selectedVideoId={props.selectedVideoId}
+                        deleteCommentWithAPI={
+                            props.deleteCommentWithAPI
+                        }
+                    />
                 ))}
             </ul>
         </section>

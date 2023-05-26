@@ -11,11 +11,7 @@ function VideoList(props) {
                         (video) => video.id !== props.activeVideoID
                     )
                     .map((video) => (
-                        <Video
-                            key={video.id}
-                            videoData={video}
-                            changeVideo={props.changeVideo}
-                        />
+                        <Video key={video.id} videoData={video} />
                     ))}
             </ul>
         </section>
