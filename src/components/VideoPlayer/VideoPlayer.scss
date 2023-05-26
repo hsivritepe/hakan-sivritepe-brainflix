@@ -2,6 +2,15 @@
 @use '../../styles/partials/mixins' as *;
 
 .video-player {
+    background-color: $secondary-color-darkblack;
+
+    @include tablet {
+        padding: 0 toRem($padding-tablet-between-components-px);
+    }
+    @include desktop {
+        padding: 0 toRem($padding-desktop-between-components-px);
+    }
+
     &__player {
         width: 100%;
     }
