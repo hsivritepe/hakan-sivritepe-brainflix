@@ -22,7 +22,8 @@
             toRem($padding-mobile-after-headlines-px) 0;
 
         @include tablet {
-            //font-size: toRem($font-mobile-section-header-px);
+            font-size: toRem($font-tablet-body-px);
+            line-height: toRem($line-height-tablet-footer-px);
             padding: 0 0 1.75rem 0;
         }
         @include desktop {

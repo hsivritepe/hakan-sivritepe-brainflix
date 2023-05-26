@@ -16,12 +16,13 @@
             flex-wrap: nowrap;
             justify-content: flex-end;
             flex-grow: 1;
+            align-items: center;
         }
     }
 
     &__profile-image {
-        max-width: 40px;
-        max-height: 40px;
+        max-width: 47px;
+        max-height: 47px;
         aspect-ratio: 1;
         border-radius: 50%;
 

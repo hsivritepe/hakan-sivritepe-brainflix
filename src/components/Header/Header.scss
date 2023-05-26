@@ -28,7 +28,10 @@
 
         @include tablet {
             padding-bottom: unset;
-            padding-right: 6rem;
         }
+    }
+
+    &__link {
+        align-self: center;
     }
 }

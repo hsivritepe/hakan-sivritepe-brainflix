@@ -23,6 +23,7 @@
         border-bottom: 1px solid $secondary-color-mercury;
 
         @include tablet {
+            font-size: toRem($font-tablet-page-header-px);
             border-bottom: unset;
             margin: unset;
         }
@@ -72,5 +73,10 @@
             line-height: toRem($line-height-tablet-body-px);
             margin: unset;
         }
+    }
+    &__date,
+    &__likes,
+    &__views {
+        color: $primary-color-silver;
     }
 }

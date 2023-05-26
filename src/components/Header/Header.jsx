@@ -7,7 +7,7 @@ import Upload from '../Upload/Upload';
 function Header() {
     return (
         <header className="header">
-            <Link to="/">
+            <Link to="/" className="header__link">
                 <img src={logo} alt="" className="header__logo" />
             </Link>
             <Upload />

@@ -108,7 +108,14 @@ function HomePage(props) {
     return (
         <>
             {props.header}
-            <VideoPlayer activeVideoURL={videoDetailsData.video} />
+            <VideoPlayer
+                activeVideoData={[
+                    {
+                        videoURL: videoDetailsData.video,
+                        imageURL: videoDetailsData.image,
+                    },
+                ]}
+            />
             <section className="bottom-part">
                 <div className="bottom-part__left-side">
                     <VideoDetails

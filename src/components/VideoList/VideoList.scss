@@ -29,9 +29,52 @@
 
         @include tablet {
             padding: 0 0 toRem($padding-tablet-after-headlines-px) 0;
+            font-size: toRem($font-tablet-body-px);
+            line-height: toRem($line-height-tablet-footer-px);
         }
         @include desktop {
             padding: 0 0 toRem($padding-desktop-after-headlines-px) 0;
         }
+    }
+
+    &__item {
+        display: flex;
+        cursor: pointer;
+        text-decoration: unset;
+        color: unset;
+    }
+    &__item-title {
+        font-weight: 700;
+        font-size: toRem($font-mobile-subheader-px);
+        line-height: toRem($line-height-mobile-footer-px);
+
+        @include tablet {
+            font-size: toRem($font-tablet-body-px);
+            line-height: toRem($line-height-tablet-footer-px);
+        }
+    }
+    &__item-owner {
+        font-size: toRem($font-mobile-footer-px);
+
+        @include tablet {
+            font-size: toRem($font-tablet-footer-px);
+        }
+    }
+
+    &__image {
+        width: 100px;
+        height: 57px;
+        border-radius: 4px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+
+        @include tablet {
+            width: 180px;
+            height: 103px;
+        }
+    }
+    &__text-content {
+        padding: 0 0 0 toRem($padding-mobile-between-components-px);
+        flex-grow: 1;
     }
 }
