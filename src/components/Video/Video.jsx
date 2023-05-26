@@ -2,8 +2,8 @@ import './Video.scss';
 
 import { Link } from 'react-router-dom';
 
-function Video(props) {
-    let { id, image, title, channel } = props.videoData;
+function Video({ videoData }) {
+    let { id, image, title, channel } = videoData;
     return (
         <li key={id}>
             <Link to={`/video/${id}`} className="video-list__item">

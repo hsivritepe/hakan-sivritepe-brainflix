@@ -6,7 +6,7 @@ function Comment(props) {
     const handleCommentDelete = () => {
         props.deleteCommentWithAPI(props.selectedVideoId, props.id);
     };
-    console.log(props);
+    // console.log(props);
     let { name, comment, timestamp } = props.commentData;
     const date = new Date(timestamp);
     return (

@@ -12,21 +12,27 @@ import axios from 'axios';
 function HomePage(props) {
     const [videoDetailsData, setVideoDetailsData] = useState([]);
     const [videoData, setVideoData] = useState([]);
-    const [selectedVideoId, setSelectedVideoId] = useState(
-        '84e96018-4022-434e-80bf-000ce4cd12b8'
-    );
+    const [selectedVideoId, setSelectedVideoId] = useState(null);
 
     const params = useParams();
 
     const getVideoDetailsWithAPI = (selectedVideoId) => {
-        axios
-            .get(
-                `https://project-2-api.herokuapp.com/videos/${selectedVideoId}?api_key=53115177-82fd-4748-a35b-155d0b38c944`
-            )
-            .then((response) => {
-                setVideoDetailsData(response.data);
-            })
-            .catch((error) => console.log(error));
+        if (selectedVideoId) {
+            axios
+                .get(
+                    `https://project-2-api.herokuapp.com/videos/${selectedVideoId}`,
+                    {
+                        params: {
+                            api_key:
+                                '53115177-82fd-4748-a35b-155d0b38c944',
+                        },
+                    }
+                )
+                .then((response) => {
+                    setVideoDetailsData(response.data);
+                })
+                .catch((error) => console.log(error));
+        }
     };
 
     const createNewCommentWithAPI = (formData, selectedVideoId) => {
@@ -71,9 +77,11 @@ function HomePage(props) {
     // Gather the videos for the video list for once
     useEffect(() => {
         axios
-            .get(
-                'https://project-2-api.herokuapp.com/videos?api_key=53115177-82fd-4748-a35b-155d0b38c944'
-            )
+            .get('https://project-2-api.herokuapp.com/videos', {
+                params: {
+                    api_key: '53115177-82fd-4748-a35b-155d0b38c944',
+                },
+            })
             .then((response) => {
                 setVideoData(response.data);
             })
@@ -87,16 +95,15 @@ function HomePage(props) {
 
     // Track the params for routing between the video pages
     useEffect(() => {
-        if (!params.id) {
-            setSelectedVideoId(
-                '84e96018-4022-434e-80bf-000ce4cd12b8'
-            );
-        } else {
+        if (params.id) {
             setSelectedVideoId(params.id);
+        } else if (videoData.length > 0) {
+            console.log('set it in params');
+            setSelectedVideoId(videoData['0'].id);
         }
-    }, [params.id]);
+    }, [params.id, videoData]);
 
-    console.log('selectedID : ' + selectedVideoId);
+    console.log('selectedID (end) : ' + selectedVideoId);
 
     return (
         <>
