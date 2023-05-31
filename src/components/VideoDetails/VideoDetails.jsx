@@ -2,18 +2,13 @@ import './VideoDetails.scss';
 import imageViews from '../../assets/icons/views.svg';
 import imageLikes from '../../assets/icons/likes.svg';
 
+import utils from '../../utils';
+
 // This component is used to create and display the video details on the page
 function VideoDetails(props) {
-    let {
-        channel,
-        comments,
-        description,
-        likes,
-        timestamp,
-        title,
-        video,
-        views,
-    } = props.activeVideoDetails;
+    const { channel, description, likes, timestamp, title, views } =
+        props.activeVideoDetails;
+
     const date = new Date(timestamp);
     return (
         <section className="video-details">
@@ -29,10 +24,12 @@ function VideoDetails(props) {
                 </div>
                 <div className="video-details__right-column">
                     <p className="video-details__views">
-                        <img src={imageViews} alt="" /> {views}
+                        <img src={imageViews} alt="" />{' '}
+                        {utils.formatNumber(views)}
                     </p>
                     <p className="video-details__likes">
-                        <img src={imageLikes} alt="" /> {likes}
+                        <img src={imageLikes} alt="" />{' '}
+                        {utils.formatNumber(likes)}
                     </p>
                 </div>
             </div>
