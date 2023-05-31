@@ -6,13 +6,26 @@ import publishIcon from '../../assets/icons/publish.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+import axios from 'axios';
+
 function UploadPage(props) {
     const navigate = useNavigate();
 
     // Handle form submission by interrupting and alerting the status
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        alert('Form submission is successful!');
+
+        axios
+            .post('http://localhost:8080/videos', {
+                title: event.target.videoTitle.value,
+                description: event.target.videoDescription.value,
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => console.log(error));
+
+        // alert('Form submission is successful!');
         navigate('/');
     };
 
