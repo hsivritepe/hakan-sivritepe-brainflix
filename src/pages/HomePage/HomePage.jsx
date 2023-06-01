@@ -21,13 +21,6 @@ function HomePage(props) {
         if (selectedVideoId) {
             axios
                 .get(
-                    // `https://project-2-api.herokuapp.com/videos/${selectedVideoId}`,
-                    // {
-                    //     params: {
-                    //         api_key:
-                    //             '53115177-82fd-4748-a35b-155d0b38c944',
-                    //     },
-                    // }
                     `http://localhost:8080/videos/${selectedVideoId}`
                 )
                 .then((response) => {
@@ -44,16 +37,6 @@ function HomePage(props) {
             name: 'Hakan Sivritepe',
         };
         axios
-            // .post(
-            //     `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments`,
-            //     newCommentData,
-            //     {
-            //         params: {
-            //             api_key:
-            //                 '53115177-82fd-4748-a35b-155d0b38c944',
-            //         },
-            //     }
-            // )
             .post(
                 `http://localhost:8080/videos/${selectedVideoId}/comments`,
                 newCommentData
@@ -68,13 +51,6 @@ function HomePage(props) {
     const deleteCommentWithAPI = (selectedVideoId, commentId) => {
         axios
             .delete(
-                // `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments/${commentId}`,
-                // {
-                //     params: {
-                //         api_key:
-                //             '53115177-82fd-4748-a35b-155d0b38c944',
-                //     },
-                // }
                 `http://localhost:8080/videos/${selectedVideoId}/comments/${commentId}`
             )
             .then((response) => {
@@ -83,14 +59,23 @@ function HomePage(props) {
             .catch((error) => console.log(error));
     };
 
+    // Increase the likes of the videos
+    const increaseLikesOfVideo = (selectedVideoId) => {
+        axios
+            .put(
+                `http://localhost:8080/videos/${selectedVideoId}/likes`
+            )
+            .then((response) => {
+                getVideoDetailsWithAPI(selectedVideoId);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     // Gather the videos for the video list for once
     useEffect(() => {
         axios
-            // .get('https://project-2-api.herokuapp.com/videos', {
-            //     params: {
-            //         api_key: '53115177-82fd-4748-a35b-155d0b38c944',
-            //     },
-            // })
             .get('http://localhost:8080/videos')
             .then((response) => {
                 setVideoData(response.data);
@@ -128,6 +113,7 @@ function HomePage(props) {
                 <div className="bottom-part__left-side">
                     <VideoDetails
                         activeVideoDetails={videoDetailsData}
+                        increaseLikesOfVideo={increaseLikesOfVideo}
                     />
                     <CommentList
                         activeVideoComments={
