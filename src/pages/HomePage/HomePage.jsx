@@ -59,6 +59,16 @@ function HomePage(props) {
             .catch((error) => console.log(error));
     };
 
+    // Get all videos from the API
+    const getAllVideosFromAPI = () => {
+        axios
+            .get('http://localhost:8080/videos')
+            .then((response) => {
+                setVideoData(response.data);
+            })
+            .catch((error) => console.log(error));
+    };
+
     // Increase the likes of the videos
     const increaseLikesOfVideo = (selectedVideoId) => {
         axios
@@ -75,12 +85,7 @@ function HomePage(props) {
 
     // Gather the videos for the video list for once
     useEffect(() => {
-        axios
-            .get('http://localhost:8080/videos')
-            .then((response) => {
-                setVideoData(response.data);
-            })
-            .catch((error) => console.log(error));
+        getAllVideosFromAPI();
     }, []);
 
     // Track the changes on selected video ID to get the video details via API request
@@ -93,7 +98,6 @@ function HomePage(props) {
         if (params.id) {
             setSelectedVideoId(params.id);
         } else if (videoData.length > 0) {
-            console.log('set it in params');
             setSelectedVideoId(videoData['0'].id);
         }
     }, [params.id, videoData]);

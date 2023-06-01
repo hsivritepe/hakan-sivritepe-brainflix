@@ -14,6 +14,7 @@ function CommentList(props) {
             },
             props.selectedVideoId
         );
+        event.target.formComment.value = '';
     };
 
     return (
@@ -65,17 +66,20 @@ function CommentList(props) {
                 </form>
             </div>
             <ul className="old-comments">
-                {props.activeVideoComments?.map((comment) => (
-                    <Comment
-                        key={comment.id}
-                        id={comment.id}
-                        commentData={comment}
-                        selectedVideoId={props.selectedVideoId}
-                        deleteCommentWithAPI={
-                            props.deleteCommentWithAPI
-                        }
-                    />
-                ))}
+                {props.activeVideoComments
+                    ?.slice(0)
+                    .reverse()
+                    .map((comment) => (
+                        <Comment
+                            key={comment.id}
+                            id={comment.id}
+                            commentData={comment}
+                            selectedVideoId={props.selectedVideoId}
+                            deleteCommentWithAPI={
+                                props.deleteCommentWithAPI
+                            }
+                        />
+                    ))}
             </ul>
         </section>
     );
