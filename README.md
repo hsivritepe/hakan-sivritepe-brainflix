@@ -54,7 +54,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-There is the API repo, [https://github.com/hsivritepe/hakan-sivritepe-brainflix-api](Brainflix API), that you need to clone and start the server.
+There is the API repo, [Brainflix API](https://github.com/hsivritepe/hakan-sivritepe-brainflix-api), that you need to clone and start the server.
 
 That API repo has a DB file that has the videos and details.
 
@@ -84,6 +84,6 @@ You may also see any lint errors in the console.
 
 Distributed under the MIT License. See [LICENSE](https://github.com/hsivritepe/hakan-sivritepe-brainflix/blob/main/LICENSE.md) for more information.
 
-## Authors
+## Author
 
 -   **Hakan Sivritepe** - _Software Developer_ - [Hakan Sivritepe](https://github.com/hsivritepe/) - _Built Bandsite_
